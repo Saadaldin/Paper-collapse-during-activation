@@ -1,0 +1,10 @@
+angle_coeff            1              cosine/periodic      222.868952               1               4 # O_2 Cu4+2 O_2
+angle_coeff            2              cosine/periodic      105.916453               1               4 # O_2 Cu4+2 Cu4+2
+angle_coeff            3              cosine/periodic      114.578032              -1               3 # H_ C_R C_R
+angle_coeff            4              cosine/periodic      222.595017              -1               3 # C_R C_R C_R
+angle_coeff            5              cosine/periodic      198.274298              -1               3 # C_3 C_R C_R
+angle_coeff            6              cosine/periodic      413.556852              -1               3 # O_2 C_R O_2
+angle_coeff            7              cosine/periodic      275.428492              -1               3 # O_2 C_R C_R
+angle_coeff            8              cosine/periodic      204.366560              -1               3 # C_R C_R C_R
+angle_coeff            9                      fourier      226.550294        0.343737        0.374972        0.281246 # C_R C_3 C_R
+angle_coeff           10              cosine/periodic      154.420358              -1               3 # Cu4+2 O_2 C_R

@@ -1,0 +1,12 @@
+solvent		surface_tension	boiling point
+water			72.7		100
+DMF				34.4		153
+acetone			23.0		56.5
+methanol		22.1		64.7
+ethanol			22.0		78.4
+dichloromethane	27.8		39
+acetonitrile	19.1		82
+chloroform		27.1		61.2
+DMSO			42.9		189
+CO2				0			0
+freeze			0			0

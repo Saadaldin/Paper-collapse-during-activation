@@ -1,0 +1,79 @@
+# A script to calculate the bulk modulus of a MOFs
+# From energy-volume equation of state
+# 
+#
+# Developed by: Saad Aldin Mohamed
+# Date: April 30, 2021
+# Email: sa3danny@yahoo.com
+#
+# To run the code using the serial version of LAMMPS on the command prompt:  
+# lmp_serial -in SUKYIH_clean.in
+#
+#################################################################################
+log             log.SUKYIH_clean append
+units           real
+atom_style      full
+boundary        p p p
+
+pair_style      lj/cut 12.500
+bond_style      harmonic
+angle_style     hybrid fourier cosine/periodic
+dihedral_style  harmonic
+improper_style  fourier
+
+dielectric      1.0
+pair_modify     tail yes mix arithmetic
+special_bonds   lj/coul 0.0 0.0 1.0
+box tilt        large
+read_data       data.SUKYIH_clean
+
+#### Atom Groupings ####
+group           fram     id   1:1980
+#### END Atom Groupings ####
+
+########################################## Energy minimzation cycles ##########################################################
+thermo_style 	custom step vol lx pe
+
+#label 			init_loop
+#variable 		itr loop 100
+min_style 		cg
+fix 			1 all box/relax aniso 0.0
+minimize       	1.0e-15 1.0e-15 100000 100000
+unfix			1
+
+min_style 		fire
+minimize       	1.0e-15 1.0e-15 100000 100000
+displace_atoms all random 1.0e-5 1.0e-5 1.0e-5 87287 units box
+
+#next        	itr
+#jump        	SELF init_loop
+reset_timestep  0
+
+write_restart restart_SUKYIH_clean.equil
+########################################## Bulk modulus calcualtions ##########################################################
+
+print 			"------------------------ Start of Looping ------------------------------"
+label		 	my_loop
+variable        s index 0.990 0.992 0.994 0.996 0.998 1.00 1.002 1.004 1.006 1.008 1.010 	# scale factor
+clear
+box tilt large
+read_restart restart_SUKYIH_clean.equil
+include Angle_coeffs_SUKYIH_clean.data
+print 			"---------------------- Lattice scale ${s} -----------------------------"
+change_box 		all x scale ${s} y scale ${s} z scale ${s} remap
+
+variable        V equal vol 	#Volume variable
+variable       	PE equal pe		#potential variable 
+
+min_style 		fire
+minimize       	1.0e-15 1.0e-15 100000 100000
+
+print 			"${V} ${PE}" append V_PE_data_SUKYIH_clean.out
+
+reset_timestep  0
+
+print "Simulation is done !!!"
+
+next        	s
+jump        	SELF my_loop
+#####################################################################################################################
