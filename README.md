@@ -1,4 +1,4 @@
-# Data and Codes associated with this manuscript: 
+# Data and codes associated with this manuscript: 
 ⊙	Raw data for the activation status, geometrical, and mechanical properties.  
 ⊙	Codes based on Jupiter notebook.  
 ⊙	Sample simulation scripts for calculations of the mechanical properties;  
