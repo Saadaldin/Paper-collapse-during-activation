@@ -4,5 +4,3 @@
 ⊙	Sample simulation scripts for calculations of the mechanical properties;  
   •	Based on the elastic tensor.  
   •	Based on equation of state (EOS).  
-⊙	The CIF of MUNDOQ (manually cleaned) 
-
