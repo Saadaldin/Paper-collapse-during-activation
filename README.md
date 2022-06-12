@@ -2,5 +2,5 @@
 ⊙	Raw data of the activation status and geometrical/mechanical properties.
 ⊙	Codes based on Jupyter notebook.
 ⊙	Sample simulation scripts for calculations of the mechanical properties; 
-•	Based on the elastic tensors. 
-•	Based on the equation of state (EOS).
+  •	Based on the elastic tensors. 
+  •	Based on the equation of state (EOS).
